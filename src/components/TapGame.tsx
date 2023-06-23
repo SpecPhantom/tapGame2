@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Style.css"
-import { Box, Button } from '@mui/material';
+import "./pic.css"
+import { Box} from '@mui/material';
 
 
 const TapGame = () => {
@@ -15,7 +16,7 @@ const TapGame = () => {
 
     const handleTap = () => {
       setClickCount((clickCount + ((levelClicker + 1))))
-      setMoney(Money + (MoneyPerTap))
+      setMoney(Money + (MoneyPerTap * (levelClicker + 1)))
     };
 
     const handleBuyAutoClicker = () => {
@@ -55,6 +56,7 @@ const TapGame = () => {
         {
           levelUPClicker(levelClicker + 1)
           setMoney(Money - (5 * (levelClicker + 1)))
+          // setMoney(Money + (MoneyPerTap * (levelClicker + 1)))
         }
       }else
       {
@@ -67,9 +69,9 @@ const TapGame = () => {
       const autoClickerInterval = setInterval(() => {
         setClickCount((prevCount) => prevCount + autoClickerCount)
         setMoney((prevMoney) => prevMoney + (autoClickerCount * MoneyPerTap))
-        console.log(autoClickerCount * MoneyPerTap)
-        console.log("auto" + autoClickerCount)
-        console.log("MPt" + MoneyPerTap)
+        // console.log(autoClickerCount * MoneyPerTap)
+        // console.log("auto" + autoClickerCount)
+        // console.log("MPt" + MoneyPerTap)
       }, 1000)
   
       return () => clearInterval(autoClickerInterval);
@@ -77,19 +79,37 @@ const TapGame = () => {
     
     return (
         <div>
-          <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
-          <Button onClick={handleTap}>Click me!</Button>
-          </Box>
-              
-          <p>Click Count: {clickCount}</p>
-          <p>Money: {Money}</p>
-          <button onClick ={handleBuyAutoClicker}>Buy Auto Clicker {levelAutoClicker !== 0 &&<span>{levelAutoClicker} </span>}</button>
-          <button onClick={handleMoneyGen}>Buy Money Gen {levelMoneyGen !== 0 && <span>{levelMoneyGen}</span>}</button>
-          <button onClick={handleTapCount}>Buy Tap Count {levelClicker !== 0 && <span>{levelClicker}</span>}</button>
-          <p>Auto Clicker Count: {autoClickerCount}</p>
-          <p>MpS Count: {(MoneyPerTap * autoClickerCount)}</p>
-          <p>Mpt Count: {MoneyPerTap}</p>
-          <p>CpT Count: {((levelClicker + 1))}</p>
+          <span className='CountLabel'>Click Count: {clickCount}</span>
+          <span className='MoneyLabel'>Money: {Money}</span>
+          <Box
+            sx={{
+              width: '40%' ,
+              height: 500,
+              backgroundColor: 'warning.dark',
+              padding: '20px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              opacity: [0.9, 0.8, 0.7],
+              '&:hover': {
+                backgroundColor: 'warning.main',
+                opacity: [0.9, 0.8, 0.7],
+              },
+            }} onClick = {handleTap}
+            ><div className='textInBox'>Click me!</div>
+            </Box>
+            <span className='spanFirst'>Auto Clicker Count: {autoClickerCount} |</span>
+          <span className='span'>Money per Sec: {(MoneyPerTap * autoClickerCount)} |</span>
+          <span className='span'>Money per Click : {MoneyPerTap * (levelClicker + 1)} |</span>
+          <span className='spanLast'>Click per Count: {((levelClicker + 1))}</span>
+          <button className='boostButtonFirst' onClick={handleTapCount}>Buy Tap Count {levelClicker < 10 && <span>{(5 * (levelClicker + 1))} ฿ </span>} 
+                                                          {levelClicker !== 0 &&<span>(lvl.{levelClicker}) </span>}</button>
+          <button className='boostButton' onClick={handleMoneyGen}>Buy Money Gen {levelMoneyGen < 10 && <span>{(10 * (levelMoneyGen + 1))} ฿ </span>}
+                                                                    {levelMoneyGen !== 0 &&<span>(lvl.{levelMoneyGen}) </span>}</button>
+          <button className='boostButton' onClick ={handleBuyAutoClicker}>Buy Auto Clicker {levelAutoClicker < 10 && <span>{(20 * (levelAutoClicker + 1))} ฿ </span>} 
+                                                                    {levelAutoClicker !== 0 &&<span>(lvl.{levelAutoClicker}) </span>}</button>
+
+          
+
         </div>
       );
 };

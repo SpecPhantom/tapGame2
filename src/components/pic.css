@@ -1,0 +1,13 @@
+.pic{
+    background-color: antiquewhite;
+    background-image: url('../images/store.png');
+    color: white;
+    background-size: cover;
+}
+.pic-center
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}

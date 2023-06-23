@@ -1,11 +1,12 @@
 import { Card } from "@mui/material"
 import TapGame from "./TapGame"
-
+// import '../images/store.png'
+import '../components/pic.css'
 
 const TapBoardContainer = () => {
     return (
         <>
-        <Card
+        <Card className = 'pic'
             variant="outlined"
             style={{
                 padding: '24px',

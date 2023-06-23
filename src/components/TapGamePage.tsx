@@ -1,11 +1,11 @@
 import TapBoardContainer from "./TapGameContainer"
-
+import './Style.css'
 
 const TapBoardPage = () => {
 
     return (
         <>
-        <h1>Tap Idle Game</h1>
+        <h1 className="head">Bakery Idle</h1>
         <TapBoardContainer/>
         </>
     )

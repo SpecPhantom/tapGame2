@@ -1,9 +1,57 @@
-.Itembutton
+.head
 {
-    display: inline;
+    font-family: "Times New Roman", Times, serif;
+    font-style: normal;
+    text-align: center;
 }
 
-.disableButton
+.CountLabel
 {
-    background-color: red;
+    color: antiquewhite;
+    padding-left: 180px ;
+    /* padding-right: px; */
+}
+
+.MoneyLabel
+{
+    color: antiquewhite;
+    padding-left: 140px;
+    display: inline;
+}
+.textInBox
+{
+    padding-top: 250px;
+    padding-bottom: 250px;
+    color:aliceblue;
+    text-align: center;
+}
+
+.boostButtonFirst
+{
+    padding : 5px;
+    margin-left : 90px;
+    display: inline-block;
+}
+.boostButton
+{
+    padding :5px;
+    margin : 5px;
+    display: inline;
+}
+.spanFirst
+{
+    color: antiquewhite;
+    padding-left: 25px;
+    padding-right: 5px;
+}
+.span
+{
+    color: antiquewhite;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.spanLast
+{
+    color: antiquewhite;
+    padding-right: 30px;
 }
