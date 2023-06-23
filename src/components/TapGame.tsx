@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "./Style.css"
-import ScorePage from './ScorePage/ScorePage'
-import { useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 
 
@@ -16,8 +14,8 @@ const TapGame = () => {
     let MaxLevelClicker, MaxLevelMoneyGen, MaxLevelAutoClicker = false
 
     const handleTap = () => {
-      setClickCount((clickCount + (1 * (levelClicker + 1))))
-      setMoney(Money + (MoneyPerTap * (levelClicker + 1)))
+      setClickCount((clickCount + ((levelClicker + 1))))
+      setMoney(Money + (MoneyPerTap))
     };
 
     const handleBuyAutoClicker = () => {
@@ -67,9 +65,12 @@ const TapGame = () => {
 
     useEffect(() => {
       const autoClickerInterval = setInterval(() => {
-        setClickCount((prevCount) => prevCount + autoClickerCount);
+        setClickCount((prevCount) => prevCount + autoClickerCount)
         setMoney((prevMoney) => prevMoney + (autoClickerCount * MoneyPerTap))
-      }, 1000);
+        console.log(autoClickerCount * MoneyPerTap)
+        console.log("auto" + autoClickerCount)
+        console.log("MPt" + MoneyPerTap)
+      }, 1000)
   
       return () => clearInterval(autoClickerInterval);
     }, [autoClickerCount]);
