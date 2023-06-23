@@ -73,7 +73,7 @@ const TapGame = () => {
       }, 1000)
   
       return () => clearInterval(autoClickerInterval);
-    }, [autoClickerCount]);
+    }, [autoClickerCount, MoneyPerTap]);
     
     return (
         <div>
@@ -87,7 +87,8 @@ const TapGame = () => {
           <button onClick={handleMoneyGen}>Buy Money Gen {levelMoneyGen !== 0 && <span>{levelMoneyGen}</span>}</button>
           <button onClick={handleTapCount}>Buy Tap Count {levelClicker !== 0 && <span>{levelClicker}</span>}</button>
           <p>Auto Clicker Count: {autoClickerCount}</p>
-          <p>MpTap Count: {(MoneyPerTap * autoClickerCount)}</p>
+          <p>MpS Count: {(MoneyPerTap * autoClickerCount)}</p>
+          <p>Mpt Count: {MoneyPerTap}</p>
           <p>CpT Count: {((levelClicker + 1))}</p>
         </div>
       );
